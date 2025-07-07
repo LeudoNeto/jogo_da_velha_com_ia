@@ -44,20 +44,20 @@ class JogadorIA(Jogador):
                     count = 0
                     # Checa linhas
                     for li in range(3):
-                        if self.tabuleiro.matriz[li].count(self.tipo) == 2 and self.tabuleiro.matriz[li].count(Tabuleiro.DESCONHECIDO) == 1:
+                        if sum(self.tabuleiro.matriz[li]) == self.tipo * 2:
                             count += 1
                     # Checa colunas
                     for ci in range(3):
                         col = [self.tabuleiro.matriz[li][ci] for li in range(3)]
-                        if col.count(self.tipo) == 2 and col.count(Tabuleiro.DESCONHECIDO) == 1:
+                        if sum(col) == self.tipo * 2:
                             count += 1
                     # Checa diagonal principal
                     diag1 = [self.tabuleiro.matriz[i][i] for i in range(3)]
-                    if diag1.count(self.tipo) == 2 and diag1.count(Tabuleiro.DESCONHECIDO) == 1:
+                    if sum(diag1) == self.tipo * 2:
                         count += 1
                     # Checa diagonal secundária
                     diag2 = [self.tabuleiro.matriz[i][2-i] for i in range(3)]
-                    if diag2.count(self.tipo) == 2 and diag2.count(Tabuleiro.DESCONHECIDO) == 1:
+                    if sum(diag2) == self.tipo * 2:
                         count += 1
                     # Se cria duas ou mais sequências de vitória
                     if count >= 2:
